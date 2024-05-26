@@ -1,0 +1,176 @@
+{
+     "layer": "top",
+     "postion" : "top", 
+
+    "modules-left": ["hyprland/workspaces","custom/right","custom/telegram","custom/pipe","custom/browser","custom/pipe","custom/files","custom/pipe","custom/code"],
+    "modules-center": ["hyprland/window","custom/right","tray"],
+    "modules-right": ["keyboard-state","idle_inhibitor","custom/right","cpu","custom/pipe","temperature","custom/right","network","custom/pipe", "pulseaudio","custom/pipe", "backlight","custom/right", "battery", "clock","custom/right","custom/power","custom/right"],
+    
+    // Modules configuration
+    "hyprland/workspaces": {
+         "disable-scroll": false,
+         "all-outputs": true,
+         "warp-on-scroll": false,
+         "format": "{icon}",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "",
+             "5": "",
+             "urgent": "",
+             "active": "",
+             "default": ""
+         },
+	 "persistent-workspaces": {
+	      "*" : 5
+	}
+     },
+
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "tray": {
+        "icon-size": 17,
+        "spacing": 10
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "{}% "
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{essid} ({signalStrength}%) \n{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": false,
+
+        "on-click" : "bash ~/.config/waybar/rofi-network-manager/rofi-network-manager.sh"
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+   
+    "custom/telegram": {
+      "on-click": "telegram-desktop",
+      "format": "<span font='12'></span>",
+      "tooltip": false,
+      "icon-size" : 20
+    },
+
+    "custom/browser": {
+      "on-click": "firefox",
+      "format": "<span font='12'></span>",
+      "tooltip": false,
+      "icon-size" : 20
+    },
+
+    "custom/files": {
+      "on-click": "thunar",
+      "format": "<span font='12'>󰝰</span>",
+      "tooltip": false,
+      "icon-size" : 20
+    },
+
+    "custom/code": {
+      "on-click": "code",
+      "format": "<span font='12'> </span>",
+      "tooltip": false,
+    },
+    "custom/power": {
+      "on-click": "wlogout",
+      "format": "<span font='12'>󰐥</span>",
+      "tooltip": false,
+      "icon-size" : 20
+    },
+
+    "custom/left": {
+        "format": " ",
+        "interval" : "once",
+        "tooltip": false
+    },
+
+    "custom/right": {
+        "format": " ",
+        "interval" : "once",
+        "tooltip": false
+    },
+    "custom/pipe": {
+	"format" : "|",
+	"interval" : "once",
+	"tooltip" : false
+    
+    }
+
+}

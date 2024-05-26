@@ -1,0 +1,1 @@
+/home/mr_aaryan/.local/share/omf/themes/boxfish/fish_prompt.fish
