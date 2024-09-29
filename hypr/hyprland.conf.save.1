@@ -1,9 +1,6 @@
 
 monitor=,preferred,auto,1
 
-# Execute XDG_CURRENT_DESKTOP
-exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
 # Execute your WAYBAR AND HYPRPAPER at launch
 exec-once = waybar & hyprpaper
 
@@ -11,7 +8,7 @@ exec-once = waybar & hyprpaper
 bind = SUPER, W, exec, killall waybar && waybar
 
 #Execute HYPRIDLE
-exec-once = hypridle
+#exec-once = hypridle
 
 #Execute swayosd
 exec-once = swayosd-server
@@ -107,7 +104,7 @@ dwindle {
 
 master {
     # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-    new_status=master
+    new_is_master = true
 }
 
 gestures {
@@ -120,21 +117,25 @@ misc {
     force_default_wallpaper = -1 # Set to 0 to disable the anime mascot wallpapers
 }
 
+# Example per-device config
+# See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
 device {
     name = epic-mouse-v1
     sensitivity = -0.5
 }
 
-# Window Rules
+# Example windowrule v1
+# windowrule = float, ^(kitty)$
+# Example windowrule v2
+# windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
+# See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+# windowrulev2 = tile, class:.* # You'll probably like this.
+# windowrulev2 = fullscreen,class:^(rofi)$
+
 windowrulev2 = opacity 0.8 override, class:^(thunar)$
+# layerrule = blur,^(thunar)$
 
-# Window Rules for screen share
-windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
-windowrulev2 = noanim, class:^(xwaylandvideobridge)$
-windowrulev2 = noinitialfocus, class:^(xwaylandvideobridge)$
-windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
-windowrulev2 = noblur, class:^(xwaylandvideobridge)$
-
+# windowrulev2 = opacity 0.8 override, class:^(telegram-desktop)$
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 $mainMod = SUPER
@@ -192,15 +193,13 @@ bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
 
 # Setup volume keys
+ #binde=, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ 
+ #binde=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+ #bind =, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
-#binde =, XF86AudioRaiseVolume, exec, swayosd-client --output-volume +5
-#binde =, XF86AudioLowerVolume, exec, swayosd-client --output-volume -5
-#bind =, XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
-
-binde =, XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
-binde =, XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
-binde =, XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
-
+binde =, XF86AudioRaiseVolume, exec, swayosd-client --output-volume +5
+binde =, XF86AudioLowerVolume, exec, swayosd-client --output-volume -5
+bind =, XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
 
 # Setup brightness keys
 binde = , XF86MonBrightnessUp, exec, brightnessctl set 5%+
@@ -210,7 +209,8 @@ binde = , XF86MonBrightnessDown, exec, brightnessctl set 5%-
 bind = ,XF86KbdLightOnOff, exec, light -s sysfs/leds/dell::kbd_backlight
 
 # Setup microphone and [webcam] keys
-bind = ,XF86AudioMicMute, exec, pactl set-source-mute 1 toggle
+bind = ,XF86AudioMicMute, exec, pactl set-source-mute 0 toggle
+bind = ,XF86AudioMicMute, execr, ~/.config/scripts/AudioMicMute.sh 
 
 # Setup wl-clipboard
 exec-once = wl-paste --type text --watch cliphist store #Stores only text data
@@ -228,4 +228,5 @@ bindl=,switch:Lid Switch,exec,hyprlock
 # bindl=,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, disable"
 
 # Screenshot
-bind = $mainMod, Print, exec, grimshot --notify savecopy area "/home/mr_aaryan/Pictures/screenshots/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png"
+bind = $mainMod, Print, exec, grimshot --notify savecopy area
+

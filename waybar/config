@@ -24,7 +24,14 @@
          },
 	 "persistent-workspaces": {
 	      "*" : 5
-	}
+	    }
+     },
+     "hyprland/window":{
+        "format": "{}",
+        "max-length": 50,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "Firefox - $1"
+        }
      },
 
     "keyboard-state": {
