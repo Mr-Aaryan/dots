@@ -2,7 +2,7 @@
      "layer": "top",
      "postion" : "top", 
 
-    "modules-left": ["hyprland/workspaces","custom/right","custom/telegram","custom/pipe","custom/browser","custom/pipe","custom/files","custom/pipe","custom/code"],
+    "modules-left": ["hyprland/workspaces","custom/right","custom/telegram","custom/browser", "custom/files","custom/code"],
     "modules-center": ["hyprland/window","custom/right","tray"],
     "modules-right": ["keyboard-state","idle_inhibitor","custom/right","cpu","custom/pipe","temperature","custom/right","network","custom/pipe", "pulseaudio","custom/pipe", "backlight","custom/right", "battery", "clock","custom/right","custom/power","custom/right"],
     
@@ -28,7 +28,8 @@
      },
      "hyprland/window":{
         "format": "{}",
-        "max-length": 50,
+        "on-empty": "empty",
+        "max-length": 40,
         "rewrite": {
             "(.*) — Mozilla Firefox": "Firefox - $1"
         }
@@ -124,7 +125,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["  ", "  ", "  "]
         },
         "on-click": "pavucontrol"
     },
@@ -153,7 +154,7 @@
     "custom/code": {
       "on-click": "code",
       "format": "<span font='12'> </span>",
-      "tooltip": false,
+      "tooltip": false
     },
     "custom/power": {
       "on-click": "wlogout",
@@ -177,7 +178,6 @@
 	"format" : "|",
 	"interval" : "once",
 	"tooltip" : false
-    
     }
 
 }
