@@ -1,0 +1,168 @@
+// -*- mode: jsonc -*-
+{
+  "layer": "top",
+  "postion": "top",
+
+  "modules-left": ["group/workspace", "tray"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": ["group/info", "group/utils", "custom/power"],
+
+  // Modules configuration
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 4
+    }
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "on-empty": "empty",
+    "tooltip": false,
+    "max-length": 40,
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "Firefox - $1"
+    }
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+
+  "tray": {
+    "icon-size": 17,
+    "spacing": 10
+  },
+
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+
+  "cpu": {
+    "format": "{usage}% ",
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": "{}% "
+  },
+
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": ["", "", ""]
+  },
+
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "{percent}% <span font='12'></span>"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "battery#bat2": {
+    "bat": "BAT2"
+  },
+
+  "network": {
+    "format-wifi": "󰤨",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "tooltip-format": "{essid} ({signalStrength}%) \n{ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": false
+  },
+  "bluetooth": {
+    "format": "<span font='10'></span>",
+    "icon-size": 20,
+    "format-disabled": "",
+    "format-connected": "",
+    "tooltip": false,
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  },
+
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["  ", "  ", "  "]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "custom/arch": {
+    "format": "<span font='12'>󰣇</span>",
+    "tooltip": false,
+    "icon-size": 20
+  },
+  "custom/power": {
+    "on-click": "wlogout",
+    "format": "<span font='12'>󰐥</span>",
+    "tooltip": false,
+    "icon-size": 20
+  },
+
+  "custom/left": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  "custom/right": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/pipe": {
+    "format": "|",
+    "interval": "once",
+    "tooltip": false
+  },
+  "group/utils": {
+    "orientation": "horizontal",
+    "modules": ["network", "bluetooth"]
+  },
+  "group/info": {
+    "orientation": "horizontal",
+    "modules": ["pulseaudio", "backlight", "battery", "clock"]
+  },
+  "group/workspace": {
+    "orientation": "horizontal",
+    "modules": ["custom/arch", "custom/pipe", "hyprland/workspaces"]
+  }
+}

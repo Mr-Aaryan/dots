@@ -1,5 +1,8 @@
+@import "color.css";
+
 * {
-  font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-family: "JetBrainsMono Nerd Font", "FontAwesome", "Roboto", Helvetica,
+    Arial, sans-serif;
   font-size: 13px;
   min-height: 20px;
 }
@@ -10,18 +13,20 @@ window#waybar {
   transition: none;
 }
 
-.modules-left > widget:first-child > #workspaces {
-  margin-left: 5px;
+tooltip {
+  background-color: @surface0;
+  border-radius: 8px;
+}
+tooltip label {
+  color: white;
 }
 
-#workspaces {
-  background-color: rgb(39, 39, 41);
-  margin-top: 2px;
-  padding: 0 5px;
-  border-radius: 5px;
+.modules-left > widget:first-child > #workspace {
+  margin-left: 8px;
 }
+
 #workspaces button {
-  color: white;
+  color: @text;
   padding: 0px 3px;
 }
 
@@ -33,143 +38,79 @@ button {
 
 button:hover {
   background: inherit;
-  box-shadow: inset 0 -1px #ffffff;
-}
-
-/* .modules-center {
-  background-color: rgb(39, 39, 41);
-  margin-top: 2px;
-  padding: 0 7px;
-  border-radius: 5px 5px 5px 5px;
-} */
-
-#tray {
-  background-color: rgb(39, 39, 41);
-  margin-top: 2px;
-  padding: 0px 7px;
-  border-radius: 0px 5px 5px 0px;
-}
-
-#window {
-  background-color: transparent;
-  margin-top: 2px;
-  padding: 0 7px;
-  border-radius: 5px 5px 5px 5px;
-}
-
-#idle_inhibitor {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 2px 0px 0px;
-  padding: 0px 9px;
-  border-radius: 5px;
-}
-
-#cpu {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 0px 0px 2px;
-  padding: 0px 7px;
-  border-radius: 5px 0px 0px 5px;
-}
-
-#temperature {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 2px 0px 0px;
-  padding: 0px 7px;
-  border-radius: 0px 5px 5px 0px;
 }
 
 #network {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 0px 0px 0px;
-  padding: 0px 7px;
-  border-radius: 5px 0px 0px 5px;
+  padding: 0rem 0.6rem 0rem 0rem;
+  margin: 1px 0;
+  color: @text;
 }
 #network.disconnected {
   color: gray;
-  background-color: rgb(39, 39, 41);
-  margin: 2px 0px 0px 0px;
-  padding: 0px 7px;
-  border-radius: 5px;
+  padding: 0rem 0.6rem 0rem 0rem;
+  margin: 1px 0;
 }
-
-#pulseaudio {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 0px 0px 0px;
-  padding: 0px 7px;
-  border-radius: 0;
-}
-
-#backlight {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 2px 0px 0px;
-  padding: 0px 7px;
-  border-radius: 0px 5px 5px 0px;
-}
-
-#battery {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 0px 0px 2px;
-  padding: 0px 7px;
-  border-radius: 5px 0px 0px 5px;
+#bluetooth {
+  padding: 0rem 0rem 0rem 0.6rem;
+  margin: 1px 0;
+  color: @text;
 }
 #battery.charging,
 #battery.plugged {
-  color: #ffffff;
-  background-color: #26a65b;
-  margin: 2px 0px 0px 2px;
-  padding: 0px 7px;
-  border-radius: 5px 0px 0px 5px;
+  color: @green;
 }
+
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
-  margin: 2px 0px 0px 2px;
-  padding: 0px 7px;
-  border-radius: 5px 0px 0px 5px;
+  color: @red;
+}
+
+#battery {
+  padding: 0rem 1rem;
+  margin: 1px 0;
+  color: @green;
 }
 
 #clock {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 5px 0px 0px;
-  padding: 0px 7px;
-  border-radius: 0px 5px 5px 0px;
+  padding: 0rem 0rem 0rem 1rem;
+  margin: 1px 0;
+  color: @blue;
 }
 
-/* Custom modules */
-#custom-pipe {
-  background-color: rgb(39, 39, 41);
-  margin-top: 2px;
-  padding: 0 2px;
+#backlight {
+  padding: 0rem 1rem;
+  margin: 1px 0;
+  color: @yellow;
 }
 
-#custom-telegram {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 0px 0px 30px;
-  padding: 1px 7px;
-  border-radius: 5px 0px 0px 5px;
+#pulseaudio {
+  color: @maroon;
 }
 
-#custom-browser {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 0px 0px 0px;
-  padding: 1px 7px;
-  border-radius: 0px;
-}
-#custom-files {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 0px 0px 0px;
-  padding: 1px 9px;
-  border-radius: 0px;
-}
-#custom-code {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 2px 0px 0px;
-  padding: 1px 7px;
-  border-radius: 0px 5px 5px 0px;
-}
 #custom-power {
-  background-color: rgb(39, 39, 41);
-  margin: 2px 2px 0px 0px;
-  padding: 1px 7px;
-  border-radius: 5px;
+  color: @red;
+}
+
+window#waybar.empty #window {
+  background: none;
+}
+
+#window {
+  color: @text;
+}
+
+#custom-arch {
+  padding-right: 8px;
+  color: @text;
+}
+
+#workspace,
+#tray,
+#window,
+#custom-power,
+#info,
+#utils {
+  background-color: @surface0;
+  border-radius: 15px;
+  padding: 3px 15px 3px 12px;
+  margin: 3px 10px 0px 0px;
 }
