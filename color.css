@@ -7,7 +7,7 @@
 @define-color peach #ef9f76;
 @define-color yellow #e5c890;
 @define-color green #a6d189;
-@define-color teal #81c8be;
+@define-color teal rgba(141, 205, 205, 0.5);
 @define-color sky #99d1db;
 @define-color sapphire #85c1dc;
 @define-color blue #8caaee;

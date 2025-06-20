@@ -4,7 +4,7 @@
   "postion": "top",
 
   "modules-left": ["group/workspace", "tray"],
-  "modules-center": ["hyprland/window"],
+  "modules-center": ["group/windows"],
   "modules-right": ["group/info", "group/utils", "custom/power"],
 
   // Modules configuration
@@ -26,9 +26,10 @@
     "format": "{}",
     "on-empty": "empty",
     "tooltip": false,
-    "max-length": 40,
+    "max-length": 20,
     "rewrite": {
-      "(.*) — Mozilla Firefox": "Firefox - $1"
+      "(.*) — Mozilla Firefox": "Mozilla Firefox",
+      "(.*) - Visual Studio Code": "Visual Studio Code"
     }
   },
 
@@ -68,7 +69,8 @@
 
   "backlight": {
     // "device": "acpi_video1",
-    "format": "{percent}% <span font='12'></span>"
+    "format": "{percent}% <span font='12'></span>",
+    "tooltip": false
   },
 
   "battery": {
@@ -77,8 +79,8 @@
       "critical": 15
     },
     "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
     "format-icons": ["", "", "", "", ""]
   },
@@ -91,14 +93,14 @@
     "format-ethernet": "{ipaddr}/{cidr} ",
     "tooltip-format": "{essid} ({signalStrength}%) \n{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
+    "format-disconnected": "󰤨",
     "format-alt": false
   },
   "bluetooth": {
     "format": "<span font='10'></span>",
     "icon-size": 20,
-    "format-disabled": "",
-    "format-connected": "",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
     "tooltip": false,
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
@@ -108,9 +110,9 @@
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
     "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
+    "format-bluetooth": "{volume}% {icon} ",
+    "format-bluetooth-muted": "<span font='14'>󰝟 </span>",
+    "format-muted": "<span font='14'>󰝟 </span>",
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {
@@ -136,7 +138,11 @@
     "tooltip": false,
     "icon-size": 20
   },
-
+  "custom/notification": {
+    "on-click": "swaync-client -t",
+    "tooltip": false,
+    "format": "<span font='10'></span>"
+  },
   "custom/left": {
     "format": " ",
     "interval": "once",
@@ -153,9 +159,20 @@
     "interval": "once",
     "tooltip": false
   },
+  // "custom/cava": {
+  //   "format": "{}",
+  //   "exec": "~/.config/waybar/scripts/cava.sh",
+  //   "return-type": "raw",
+  //   "interval": 0,
+  //   "exec-if": "playerctl -l 2>/dev/null | grep -q . && playerctl status | grep -q '^Playing$'"
+  // },
+  "group/windows": {
+    "orientation": "horizontal",
+    "modules": ["hyprland/window"]
+  },
   "group/utils": {
     "orientation": "horizontal",
-    "modules": ["network", "bluetooth"]
+    "modules": ["network", "bluetooth", "custom/notification"]
   },
   "group/info": {
     "orientation": "horizontal",

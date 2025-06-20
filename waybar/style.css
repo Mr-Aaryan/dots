@@ -55,12 +55,17 @@ button:hover {
   margin: 1px 0;
   color: @text;
 }
+#custom-notification {
+  padding: 0rem 0.2rem 0rem 0.9rem;
+  margin: 1px 0;
+  color: @text;
+}
 #battery.charging,
 #battery.plugged {
   color: @green;
 }
 
-#battery.critical:not(.charging) {
+#battery.critical:not(.charging), #battery.warning:not(.charging) {
   color: @red;
 }
 
@@ -103,14 +108,24 @@ window#waybar.empty #window {
   color: @text;
 }
 
+/* #custom-cava {
+  color: @text;
+  border-left: 0px;
+  border-right: 0px;
+  padding-bottom: 0px;
+  font-family: "bargraph";
+  font-size: 18px;
+  margin-left: 10px;
+} */
+
 #workspace,
 #tray,
-#window,
 #custom-power,
 #info,
-#utils {
+#utils,
+#window {
   background-color: @surface0;
   border-radius: 15px;
-  padding: 3px 15px 3px 12px;
+  padding: 1px 15px 1px 12px;
   margin: 3px 10px 0px 0px;
 }
